@@ -30,8 +30,30 @@ const Information = () => {
     setPosition(text);
   }
   const handleSubmit = () => {
+    const emptyFieldRegex = /^$/;
+
+    if (emptyFieldRegex.test(name.trim()) || emptyFieldRegex.test(roll.trim()) || emptyFieldRegex.test(position.trim())) {
+      alert('Fill all the required details');
+      return; // Exit the function if any field is empty
+    }
     dispatch(setUser(name, roll, position))
   }
+
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'Enter') {
+        handleSubmit();
+      }
+    };
+
+    // Attach the event listener to the whole page
+    document.addEventListener('keydown', handleKeyDown);
+
+    // Cleanup the event listener on component unmount
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [name, roll, position]); // Add dependencies to rerun the effect if the state changes
 
   useEffect(() => {
     if (qrRef.current) {
@@ -51,7 +73,8 @@ const Information = () => {
               <div ref={qrRef}>
               <QRCodeCanvas value={data} />
               </div>
-            : <img src={logo} alt="ACM"/>}
+            : <img src={logo} alt="ACM"/>
+          }
         </div>
         <div className="user-info">
           <span>My Profile</span>
