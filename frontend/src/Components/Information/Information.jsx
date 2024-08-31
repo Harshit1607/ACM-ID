@@ -18,7 +18,7 @@ const Information = () => {
   const data = JSON.stringify(user)
 
   const handleName = (e) => {
-    const text = e.target.value;
+    const text =  e.target.value;
     setName(text);
   }
   const handleRoll = (e) => {
@@ -36,7 +36,7 @@ const Information = () => {
       alert('Fill all the required details');
       return; // Exit the function if any field is empty
     }
-    dispatch(setUser(name, roll, position))
+    dispatch(setUser(name.toUpperCase(), roll.toUpperCase(), position.toUpperCase()))
   }
 
   useEffect(() => {
