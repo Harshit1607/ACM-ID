@@ -15,7 +15,7 @@ const Footer = () => {
     <section id="footer" className="footer">
       <div className="social-icons">
         <a
-          href="https://www.instagram.com/acm.bvp"
+          href="https://www.instagram.com/acm_bvp"
           className="social-link"
           target="_blank"
           rel="noopener noreferrer"
