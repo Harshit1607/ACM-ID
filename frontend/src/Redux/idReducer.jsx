@@ -1,4 +1,4 @@
-import { Set_User_Data, Set_Qr_Data } from "./actionTypes";
+import { Set_User_Data, Set_Qr_Data, Get_Home_Page } from "./actionTypes";
 
 const initialState = {
   user: null,
@@ -19,6 +19,13 @@ const reducer = (state = initialState, action) => {
         qrCodeData: action.payload,
         showId: true,
       };
+    case Get_Home_Page:
+      return{
+        ...state,
+        user: null,
+        qrCodeData: null,
+        showId: false,
+      }
     default:
       return state;
   }

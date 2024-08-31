@@ -47,7 +47,11 @@ const Information = () => {
     <section id='info' className='main-page'>
       <div className="user-info-container">
         <div className="user-profile-icon">
-          <img src={logo} alt="ACM"/>
+          { user ?
+              <div ref={qrRef}>
+              <QRCodeCanvas value={data} />
+              </div>
+            : <img src={logo} alt="ACM"/>}
         </div>
         <div className="user-info">
           <span>My Profile</span>
