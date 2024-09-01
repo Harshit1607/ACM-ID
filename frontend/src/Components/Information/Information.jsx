@@ -3,7 +3,7 @@ import './information.css'
 import logo from '../../Assets/logo.png'
 import { useDispatch, useSelector } from 'react-redux';
 import { setUser, setQr } from '../../Redux/idActions';
-import { QRCodeCanvas } from "qrcode.react";
+import { QRCodeCanvas, QRCodeSVG } from "qrcode.react";
 
 const Information = () => {
   const [name, setName] = useState("");
@@ -59,9 +59,14 @@ const Information = () => {
     if (qrRef.current) {
       const canvas = qrRef.current.querySelector('canvas');
       const imageURL = canvas.toDataURL('image/png'); // Convert canvas to base64 image (PNG format)
-
       // Automatically dispatch the action to store the QR code data in Redux
       dispatch(setQr(imageURL));
+
+      // Get the SVG element (from QRCodeSVG component)
+      const svgElement = qrRef.current.querySelector('svg');
+      const svgString = new XMLSerializer().serializeToString(svgElement);
+      const svgUrl = `data:image/svg+xml;base64,${btoa(svgString)}`;
+      console.log(svgUrl);
     }
   }, [data, dispatch]); // Re-run effect if `data` changes
 
@@ -72,6 +77,7 @@ const Information = () => {
           { user ?
               <div ref={qrRef}>
               <QRCodeCanvas value={data} />
+              <QRCodeSVG value={data} style={{ display: 'none' }} />
               </div>
             : <img src={logo} alt="ACM"/>
           }
