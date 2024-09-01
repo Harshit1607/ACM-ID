@@ -27,7 +27,7 @@
   margin-top: -10px;
 }
 
-.footer .sub-heading.credit {
+.credit {
   font-size: 0.9rem;
   color: #848484;
   text-transform: capitalize;
@@ -64,6 +64,9 @@
   border-bottom: 2.5px solid #dd6b71;
 }
 
+.credit-link{
+  text-decoration: none;
+}
 @media only screen and (max-width: 425px) {
   .footer {
     padding: 10px 10px;

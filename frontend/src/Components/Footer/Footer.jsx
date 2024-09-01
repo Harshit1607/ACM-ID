@@ -61,6 +61,17 @@ const Footer = () => {
         Powered by <a href="https://bvcoe.acm.org/">ACM BVP</a>. All rights
         reserved.
       </p>
+      <p className="sub-heading credit">
+        Created by{" "}
+        <a
+          href=" "
+          target="_blank"
+          rel="noopener noreferrer"
+          className="credit-link underline"
+        >
+          Harshit Bareja
+        </a>
+      </p>
     </section>
   )
 }
